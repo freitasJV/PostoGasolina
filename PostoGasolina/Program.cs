@@ -18,30 +18,41 @@ namespace PostoGasolina
         /// <param name="4">Fim do processo</param>
         static void Main(string[] args)
         {
-            int cod, gasolina=0, alcool=0, diesel=0;
-            do
+            try
             {
-                Console.WriteLine("Opções: 1 - Gasolina, 2 - Álcool, 3 - Diesel, 4 - Apuração final");
-                cod = int.Parse(Console.ReadLine());
-
-                switch (cod)
+                int cod, gasolina = 0, alcool = 0, diesel = 0;
+                do
                 {
-                    case 1:
-                        gasolina++;
-                        break;
-                    case 2:
-                        alcool++;
-                        break;
-                    case 3:
-                        diesel++;
-                        break;
-                }
-            } while (cod != 4);
+                    Console.WriteLine("Opções: 1 - Gasolina, 2 - Álcool, 3 - Diesel, 4 - Apuração final");
+                    cod = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Muito Obrigado!");
-            Console.WriteLine($"Alcool: {alcool}");
-            Console.WriteLine($"Gasolina: {gasolina}");
-            Console.WriteLine($"Diesel: {diesel}");
+                    switch (cod)
+                    {
+                        case 1:
+                            gasolina++;
+                            break;
+                        case 2:
+                            alcool++;
+                            break;
+                        case 3:
+                            diesel++;
+                            break;
+                    }
+                } while (cod != 4);
+
+                Console.WriteLine("Muito Obrigado!");
+                Console.WriteLine($"Alcool: {alcool}");
+                Console.WriteLine($"Gasolina: {gasolina}");
+                Console.WriteLine($"Diesel: {diesel}");
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine($"Erro de formatação: {e.Message}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro inesperado: {e.Message}");
+            }
         }
     }
 }
